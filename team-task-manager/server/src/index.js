@@ -23,6 +23,7 @@ app.use(cors({
     if (!origin) return callback(null, true);
     
     const allowedOrigins = [
+      'https://incandescent-croissant-ab8fd9.netlify.app',
       'https://ethara-assessment-sage.vercel.app',
       'https://ethara-assessment-2wuw37zwu-atulchakwas-projects.vercel.app',
       'http://localhost:5173',
@@ -71,6 +72,7 @@ const io = new Server(server, {
   cors: {
     origin: function(origin, callback) {
       const allowedOrigins = [
+        'https://incandescent-croissant-ab8fd9.netlify.app',
         'https://ethara-assessment-sage.vercel.app',
         'https://ethara-assessment-2wuw37zwu-atulchakwas-projects.vercel.app',
         'http://localhost:5173',
