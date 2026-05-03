@@ -37,7 +37,7 @@ const Signup = () => {
         email: form.email,
         password: form.password,
         role: form.role
-      });
+      }); https://ethara-assessment-1.onrender.com/api
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Signup failed');

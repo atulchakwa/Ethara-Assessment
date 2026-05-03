@@ -20,7 +20,7 @@ connectDB();
 app.use(helmet());
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://ethara-assessment-sage.vercel.app', 'https://ethara-assessment-sage.vercel.app/'] 
+    ? ['https://ethara-assessment-2wuw37zwu-atulchakwas-projects.vercel.app']
     : ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:5174', 'http://127.0.0.1:5174'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -51,7 +51,9 @@ const server = app.listen(config.PORT, () => {
 
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: process.env.NODE_ENV === 'production' 
+      ? ['https://ethara-assessment-2wuw37zwu-atulchakwas-projects.vercel.app']
+      : ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:5174', 'http://127.0.0.1:5174'],
     credentials: true
   }
 });

@@ -42,7 +42,7 @@ exports.signup = async (req, res) => {
     user.refreshTokens.push({ token: refreshToken, expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), userAgent: req.get('User-Agent') });
     await user.save();
     
-    res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
+    res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'none', secure: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
     
     await Activity.create({ user: user._id, action: 'user_created', targetType: 'user', targetId: user._id, ipAddress: req.ip });
     
@@ -94,7 +94,7 @@ exports.login = async (req, res) => {
     user.refreshTokens.push({ token: refreshToken, expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), userAgent: req.get('User-Agent') });
     await user.save();
     
-    res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'strict', maxAge: 7 * 24 * 60 * 60 * 1000 });
+    res.cookie('refreshToken', refreshToken, { httpOnly: true, sameSite: 'none', secure: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
     
     await Activity.create({ user: user._id, action: 'user_login', targetType: 'auth', targetId: user._id, ipAddress: req.ip });
     
